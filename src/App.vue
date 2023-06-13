@@ -1,27 +1,51 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="container">
+    <h1>Hello World</h1>
+    <p>{{ name }} - {{ age }}</p>
+    <button @click="changeName('Zelda')" class="button">change name</button>
+    <button @click="changeAge(29)" class="button">Change Age</button>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+  import { defineComponent } from 'vue';
 
-export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-});
+  export default defineComponent({
+    name: 'App',
+    components: {},
+    data() {
+      return {
+        name: 'Link',
+        age: 25 as number | string
+      }
+    },
+    methods: {
+      changeName(name: string) {
+        this.name = name
+      },
+      changeAge (age: number | string){
+        this.age = age
+      }
+    }
+  });
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .button {
+    background-color: #2ecc71; 
+    color: #FFF; 
+    font-weight: bold; 
+    padding: 8px; 
+    border-radius: 3px; 
+    cursor: pointer;
+    border: none;
+    width: 15%;
+    margin-top: 2%;
+  }
+  .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
